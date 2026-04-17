@@ -30,6 +30,7 @@ class LogManager {
         case deviceStatus = "Device Status"
         case remote = "Remote"
         case watch = "Watch"
+        case websocket = "WebSocket"
     }
 
     init() {

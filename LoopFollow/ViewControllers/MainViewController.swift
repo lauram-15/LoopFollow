@@ -213,6 +213,7 @@ class MainViewController: UIViewController, UITableViewDataSource, ChartViewDele
         showHideNSDetails()
 
         scheduleAllTasks()
+        setupNightscoutSocket()
 
         // Set up refreshScrollView for BGText
         refreshScrollView = UIScrollView()
@@ -929,6 +930,7 @@ class MainViewController: UIViewController, UITableViewDataSource, ChartViewDele
         MinAgoText.text = "Refreshing"
         Observable.shared.minAgoText.value = "Refreshing"
         scheduleAllTasks()
+        NightscoutSocketManager.shared.connectIfNeeded()
 
         currentCage = nil
         currentSage = nil
@@ -1133,6 +1135,7 @@ class MainViewController: UIViewController, UITableViewDataSource, ChartViewDele
         }
 
         TaskScheduler.shared.checkTasksNow()
+        NightscoutSocketManager.shared.reconnectIfNeeded()
 
         checkAndNotifyVersionStatus()
         checkAppExpirationStatus()
